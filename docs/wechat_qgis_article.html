@@ -12,7 +12,7 @@
     告别底图遮挡与格式孤岛：开源 QGIS 4.2 离线矢量地图与黄金三层流实战（附插件与源码）
   </h1>
   <div style="font-size: 13px; color: #64748b;">
-    <span>作者：老杨与 GeoAI 智能体团队</span> · <span>开源首发 / QGIS 4.2 适配</span>
+    <span>作者：老杨与 GeoAI 智能体团队</span> · <span>开源首发 / QGIS 4.2 适配</span> · <span>插件版本 v1.1.0</span>
   </div>
 </div>
 
@@ -25,14 +25,14 @@
 <div style="background-color: #f8fafc; border-left: 4px solid #ef4444; padding: 14px 18px; border-radius: 4px; margin-bottom: 22px;">
   <p style="margin: 0 0 8px 0; font-size: 14px; font-weight: 700; color: #991b1b;">传统桌面 GIS 遇到的三大困境：</p>
   <ul style="margin: 0; padding-left: 20px; font-size: 13.5px; color: #475569;">
-    <li style="margin-bottom: 6px;"><strong>“白底遮挡”大翻车</strong>：从手机端 Locus Map 或两步路拷过来的离线矢量地图（<code>.map</code>），想叠在卫星遥感图上。结果一加载，整幅地图自带大面积不透明的白底、林地绿块或草地色块，把底下几十米分辨率的高清遥感影像盖得严严实实；</li>
+    <li style="margin-bottom: 6px;"><strong>“白底遮挡”大翻车</strong>：从手机端 Locus Map 或两步路拷过来的离线地图（<code>.map</code>），想叠在卫星遥感图上。结果一加载，整幅地图自带大面积不透明的白底、林地绿块或草地色块，把底下几十米分辨率的高清遥感影像盖得严严实实；</li>
     <li style="margin-bottom: 6px;"><strong>移动端离线格式的“格式孤岛”</strong>：手机端几十兆就能装下一整个省等高线与野径的 Mapsforge 矢量格式，在 QGIS 原生接口里<strong>根本无法直接读取和渲染</strong>；</li>
     <li style="margin-bottom: 0;"><strong>图层打架，层次全无</strong>：网上的在线切片往往把卫星底图和等高线烘焙死在一张图里，细密的等高线直接把越野小径压在底下，画面杂乱无章，无法分别调节透明度。</li>
   </ul>
 </div>
 
 <p style="font-size: 15px; color: #334155; margin-bottom: 22px;">
-继前几天我们为商业桌面 GIS <strong>ArcGIS Pro 3.7</strong> 推出底图 Add-In 之后，今天我们正式开源面向主流开源 GIS 平台的孪生姊妹项目——<strong>Locus Map Control for QGIS</strong>（已实机通过 QGIS 4.2.3 验证，最新发布版本 <strong>v1.0.8</strong>）。
+继前几天我们为商业桌面 GIS <strong>ArcGIS Pro 3.7</strong> 推出底图 Add-In 之后，今天我们正式开源面向主流开源 GIS 平台的孪生姊妹项目——<strong>Locus Map Control for QGIS</strong>（已实机通过 QGIS 4.2.3 验证，最新重磅发布 <strong>v1.1.0</strong>）。不仅支持中英文全自动国际化切换，还集成了 Google 卫星、Elevate/Elements 经典主题，并上线了符合 QGIS 官方规范的自建插件仓库！
 </p>
 
 <!-- Section 1 -->
@@ -47,137 +47,135 @@
 <!-- Live Screenshot 1 -->
 <div style="margin: 20px 0; text-align: center;">
   <img src="D:/AIAssistant/AI教学助理/GIS开发书稿/assets/qgis_real_live.png" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.15);" alt="QGIS 4.2 实机运行黄金三层流截图" />
-  <p style="font-size: 12.5px; color: #64748b; margin-top: 8px;">图 1：QGIS 4.2.3 物理副屏实机运行昆明滇池西山区域——Esri 卫星底图 + OpenTopoMap 60% 晕渲 + 云南 1.1GB 离线地图 100% 透明叠置</p>
+  <p style="font-size: 12.5px; color: #64748b; margin-top: 8px;">图 1：QGIS 4.2.3 物理副屏实机运行昆明滇池西山区域——Esri/Google 卫星底图 + OpenTopoMap 60% 晕渲 + 云南 1.1GB 离线地图 100% 透明叠置</p>
 </div>
 
 <!-- Three layers explanation -->
 <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; padding: 16px; border-radius: 8px; margin-bottom: 22px;">
   <h4 style="margin: 0 0 10px 0; color: #166534; font-size: 14.5px;">⭐ 黄金三层架构拓扑逻辑：</h4>
   <ol style="margin: 0; padding-left: 20px; font-size: 13.5px; color: #15803d;">
-    <li style="margin-bottom: 8px;"><strong>底层 (Bottom) —— 高清卫星遥感影像（100% 不透明铺底）</strong>：<br><span style="color: #475569;">支持 Esri World Imagery 或天地图，提供森林、湖泊、裸岩与城市肌理的绝对物理地表底衬。</span></li>
+    <li style="margin-bottom: 8px;"><strong>底层 (Bottom) —— 高清卫星遥感影像（100% 不透明铺底）</strong>：<br><span style="color: #475569;">支持 Esri World Imagery 或 Google Satellite（标准与代理），提供森林、湖泊、裸岩与城市肌理的绝对物理地表底衬。</span></li>
     <li style="margin-bottom: 8px;"><strong>中层 (Middle) —— OpenTopoMap 地形等高线与山体晕渲（60% 透明度）</strong>：<br><span style="color: #475569;">半透明覆在卫星图上，为平面的遥感影像注入强烈的起伏感，山脊、垭口、峡谷一目了然，绝不泛白不抢戏。</span></li>
-    <li style="margin-bottom: 0;"><strong>顶层 (Top) —— Mapsforge 离线矢量路网与 POI 注记（纯透明叠置，100% 独立可调）</strong>：<br><span style="color: #475569;">采用精修 <code>LocusSat.xml</code> 主题，彻底剥离背景多边形面色块填充，只保留高速（橙）、主干道（黄）、街巷徒步道（白）与中英文地名标注，文字永远浮在最可视顶层。</span></li>
+    <li style="margin-bottom: 0;"><strong>顶层 (Top) —— Mapsforge 离线矢量路网与 POI 注记（纯透明叠置，100% 独立可调）</strong>：<br><span style="color: #475569;">采用精修 <code>LocusSat.xml</code>、<code>Elevate.xml</code> 主题，彻底剥离背景多边形面色块填充，只保留高速（橙）、主干道（黄）、街巷徒步道（白）与中英文地名标注，文字永远浮在最可视顶层。</span></li>
   </ol>
 </div>
 
-<!-- Section 2 -->
+<!-- Section 2: Vector Truth & TileSize -->
 <h2 style="font-size: 18px; font-weight: 700; color: #0f172a; border-left: 4px solid #0284c7; padding-left: 10px; margin: 32px 0 16px 0;">
-二、两大核心功能彻底攻克实战痛点
+二、硬核科普：所有的 .map 都是矢量的吗？
+</h2>
+
+<p style="font-size: 15px; color: #334155;">
+很多朋友问：“老杨，手机上的 <code>.map</code> 文件到底是不是矢量格式？为什么有时候载入看不到路网？”
+</p>
+
+<p style="font-size: 15px; color: #0f766e; font-weight: 700;">
+结论非常确凿：所有的 <code>.map</code> 文件百分之百是纯二进制矢量数据文件！
+</p>
+
+<p style="font-size: 14.5px; color: #334155;">
+它绝不是预先切好的 PNG/JPG 瓦片压缩包，而是由 <strong>Mapsforge Map-Writer</strong> 从 OpenStreetMap 原始数据编译而成的空间几何数据库。它的文件内部结构高度精巧：
+</p>
+
+<ul style="font-size: 13.5px; color: #475569;">
+  <li><strong>节点 (Nodes)</strong>：带有 WGS-84 经纬度的高精度坐标点与 POI 属性；</li>
+  <li><strong>折线与多边形 (Ways)</strong>：道路中线、徒步小径、等高线折线（含极值高程属性），以及建筑与水系边界；</li>
+  <li><strong>空间索引网格 (Sub-files & Tile Grids)</strong>：按缩放层级（Zoom Levels）分层存储空间 R-Tree 索引，确保毫秒级点查与范围检索。</li>
+</ul>
+
+<div style="background-color: #fffbeb; border-left: 4px solid #f59e0b; padding: 14px 18px; border-radius: 4px; margin: 18px 0;">
+  <p style="margin: 0 0 6px 0; font-size: 14px; font-weight: 700; color: #b45309;">
+    为什么 OpenAndroMaps 一加载就绚丽，而部分官方 .map 显得空白？
+  </p>
+  <p style="margin: 0; font-size: 13px; color: #78350f; line-height: 1.6;">
+    <strong>1. TileSize 切片尺寸差异（256 vs 512）</strong>：OpenAndroMaps 采用标准的 256 像素切片定义，而部分手机官方地图（如 566MB 的 <code>yunnan.osm.map</code>）针对移动端超高视网膜屏采用了 <strong>512 像素 TileSize</strong>。在桌面端 256 渲染器下，层级索引会发生偏移，必须放大到更深层级才会释放道路细节。<br>
+    <strong>2. Tag-Mapping 标签映射差异</strong>：OpenAndroMaps 针对户外等高线和野径定制了专属 Tag，与 <code>Elevate.xml</code>、<code>LocusSat.xml</code> 完美匹配；而官方基础版地图常过滤了微细野径或低级别路网。插件 v1.1.0 已全面优化了层级适配与映射兼容。
+  </p>
+</div>
+
+<!-- Section 3: New Features -->
+<h2 style="font-size: 18px; font-weight: 700; color: #0f172a; border-left: 4px solid #0284c7; padding-left: 10px; margin: 32px 0 16px 0;">
+三、v1.1.0 重磅升级特性
 </h2>
 
 <!-- Live Screenshot 2: Panel Details -->
 <div style="margin: 20px 0; text-align: center;">
   <img src="D:/AIAssistant/AI教学助理/GIS开发书稿/assets/qgis_plugin_panel_actual.png" style="max-width: 90%; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.15);" alt="QGIS 插件面板特写截图" />
-  <p style="font-size: 12.5px; color: #64748b; margin-top: 8px;">图 2：Locus Maps and Overlays 控制台特写，展示本地图库智能置顶与双轨透明度交互滑块</p>
+  <p style="font-size: 12.5px; color: #64748b; margin-top: 8px;">图 2：Locus Map Control v1.1.0 交互面板——中英文自适应、多源底图选择与赞赏关于入口</p>
 </div>
 
-<h3 style="font-size: 15.5px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0;">1. 112 个离线 .map 文件全量检索与智能置顶</h3>
+<h3 style="font-size: 15.5px; font-weight: 700; color: #1e293b; margin: 18px 0 8px 0;">1. 经典户外风格：全量引入 Elevate 与 Elements 主题</h3>
 <p style="font-size: 14.5px; color: #334155;">
-用户无需每次在复杂的深层文件目录中费力寻找 <code>.map</code> 路径。插件启动时会自动对本地工程资产库及指定盘符进行广度优先深度扫描，在我们的实机环境中自动精准命中 <strong>112 个离线地图文件</strong>，并在下拉框中智能按权重置顶关键区域：
-</p>
-<ul style="font-size: 13.5px; color: #475569;">
-  <li>⭐ <strong>Yunnan (OpenAndroMaps, 1.1 GB — 含高精等高线+路网)</strong> (<code>Ch-Yunnan_oam.osm.map</code>)</li>
-  <li>⭐ <strong>South China (OpenAndroMaps, 2.0 GB — 中国西南四省合辑)</strong> (<code>China-South_oam.osm.map</code>)</li>
-  <li>⭐ <strong>Yunnan Standard (566.6 MB)</strong> (<code>yunnan.osm.map</code>)</li>
-  <li>⭐ <strong>Zhushou Net Map (1.4 GB)</strong> (<code>zhushou-net-cn221029.map</code>)</li>
-</ul>
-
-<h3 style="font-size: 15.5px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0;">2. 矢量路网双轨实时透明度交互滑块</h3>
-<p style="font-size: 14.5px; color: #334155;">
-在面板中集成了 <strong>Road / Trail Opacity (0%~100%)</strong> 与 <strong>Topo Relief Opacity (0%~100%)</strong> 交互滑块。滑块直接与 QGIS 的 <code>QgsMapLayer.setOpacity()</code> 深度绑定，拖动滑块时画布毫秒级实时重绘，完全无需重新向后端请求切片，体验极致丝滑。
+在户外徒步圈，<strong>Elevate</strong> 与 <strong>Elements</strong>（Tobias 开发的顶级 Mapsforge 渲染主题）被誉为户外制图的天花板。插件完整内嵌了 Elevate 4/5 规则文件与全部 <code>ele-res</code> 矢量/高清图标，徒步标记（红白条纹、黄色菱形、山峰三角）在 QGIS 画布上清晰明了。
 </p>
 
-<!-- Section 3 -->
+<h3 style="font-size: 15.5px; font-weight: 700; color: #1e293b; margin: 18px 0 8px 0;">2. 扩充 Google 卫星底图与 Hybrid 混合模式</h3>
+<p style="font-size: 14.5px; color: #334155;">
+针对部分区域 Esri 遥感影像存在云雾遮挡的情况，我们在底图库中直接接入了 <strong>Google Satellite</strong>（包含标准 XYZ 瓦片、Locus 手机代理源，以及带路网地名标注的 Hybrid 混合卫星图层），满足多种复杂场景下的对照校验需求。
+</p>
+
+<h3 style="font-size: 15.5px; font-weight: 700; color: #1e293b; margin: 18px 0 8px 0;">3. 中英文双语环境自适应 (i18n)</h3>
+<p style="font-size: 14.5px; color: #334155;">
+插件启动时会自动读取 QGIS 系统的 <code>QgsApplication.locale()</code>。在中文环境下展示精致易懂的中文界面，在英文或国际化环境下无缝切换为纯正的英文术语，便于国际同行交流与科研协作。
+</p>
+
+<!-- Section 4 -->
 <h2 style="font-size: 18px; font-weight: 700; color: #0f172a; border-left: 4px solid #0284c7; padding-left: 10px; margin: 32px 0 16px 0;">
-三、系统底层架构：双轨桌面 GIS 的跨平台协同
+四、系统底层架构：双轨桌面 GIS 的跨平台协同
 </h2>
 
-<p style="font-size: 15px; color: #334155; margin-bottom: 16px;">
-QGIS 是如何能读懂移动端 Mapsforge 格式的？答案就在于我们自主设计的<strong>双轨桌面 GIS 共享中台架构</strong>：
-</p>
-
-<!-- Architecture Diagram -->
 <div style="margin: 20px 0; text-align: center;">
   <img src="D:/AIAssistant/AI教学助理/GIS开发书稿/assets/qgis_architecture_diagram.png" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.15);" alt="QGIS 4.2 与 Mapsforge 跨端系统架构图" />
   <p style="font-size: 12.5px; color: #64748b; margin-top: 8px;">图 3：QGIS 4.2 插件与后台 MapsforgeTileServer 双进程通信及跨桌面 GIS 共享总线架构</p>
 </div>
 
 <p style="font-size: 14.5px; color: #334155;">
-正如架构图所示：
+正如架构图所示，整套方案保持了极度纯粹的高内聚与松耦合：
 </p>
 <ol style="font-size: 13.5px; color: #475569; padding-left: 20px;">
   <li style="margin-bottom: 8px;"><strong>后台微服务引擎 (Java 17 LTS)</strong>：驻留在本地回环端口 <code>18765</code>，提供 <code>MultiMapDataStore</code> 空间跨图幅无缝融合能力，并内置流式正则清理器，动态剥离 Android 专用的 <code>dp</code> 移动端单位，输出纯净的透明 PNG 瓦片；</li>
   <li style="margin-bottom: 8px;"><strong>双轨桌面 GIS 共享服务总线</strong>：这套轻量微服务不仅为 QGIS 4.2 提供标准的 HTTP XYZ 瓦片接口，同时也无缝仿真标准 ArcGIS REST MapServer 协议，驱动前几天发布的 <strong>ArcGIS Pro 3.7 AddIn</strong>。同一套离线数据资产，商业桌面 GIS 与开源桌面 GIS 共享同一套高性能切片总线，无需任何格式重复拷贝或切片预烘焙！</li>
 </ol>
 
-<!-- Section 4 -->
-<h2 style="font-size: 18px; font-weight: 700; color: #0f172a; border-left: 4px solid #0284c7; padding-left: 10px; margin: 32px 0 16px 0;">
-四、关键源码解析：三大核心技术实现
-</h2>
-
-<h3 style="font-size: 14px; font-weight: 700; color: #0284c7; margin: 14px 0 6px 0;">1. 本地海量 .map 离线库 BFS 穿透式扫描</h3>
-<div style="background-color: #0f172a; color: #e2e8f0; padding: 14px; border-radius: 6px; font-family: Consolas, monospace; font-size: 12px; overflow-x: auto; margin-bottom: 14px;">
-<pre style="margin: 0;">def _discover_local_maps(self) -&gt; list[tuple[str, str]]:
-    """递归检索本地素材库，识别全部 .map 文件并按区域重要性智能打分置顶"""
-    candidates = []
-    roots = [
-        os.path.join(project_dir, "data", "_inbox", "locus", "mapsVector"),
-        os.path.join(project_dir, "data", "_inbox"),
-        r"D:\手机相册\手机S25\Locus\mapsVector"
-    ]
-    for r in roots:
-        if os.path.isdir(r):
-            for root, _, files in os.walk(r):
-                for f in files:
-                    if f.lower().endswith(".map"):
-                        full_path = os.path.normpath(os.path.join(root, f))
-                        candidates.append((self._format_title(f, full_path), full_path))
-    # 智能加权：包含 yunnan、china-south 的优先排在前列
-    return sorted(candidates, key=lambda x: self._calc_priority(x[1]))</pre>
-</div>
-
-<h3 style="font-size: 14px; font-weight: 700; color: #0284c7; margin: 14px 0 6px 0;">2. 剥离面要素多边形的 LocusSat 透明叠置机制</h3>
-<div style="background-color: #0f172a; color: #e2e8f0; padding: 14px; border-radius: 6px; font-family: Consolas, monospace; font-size: 12px; overflow-x: auto; margin-bottom: 14px;">
-<pre style="margin: 0;"># 请求 MapsforgeTileServer 时追加透明参数与面要素排除项
-params = {
-    "transparent": "true",
-    "excludeCats": "landuse,natural,wood,grass,residential", # 剔除实色背景多边形
-    "theme": "LocusSat.xml"
-}
-tile_url = f"http://127.0.0.1:18765/mapsforge/render/{{z}}/{{x}}/{{y}}.png?" + urllib.parse.urlencode(params)
-layer = QgsRasterLayer(f"type=xyz&url={tile_url}", "3. Mapsforge Vector Trails", "wms")</pre>
-</div>
-
-<h3 style="font-size: 14px; font-weight: 700; color: #0284c7; margin: 14px 0 6px 0;">3. 严格确定性图层拓扑层序注入</h3>
-<div style="background-color: #0f172a; color: #e2e8f0; padding: 14px; border-radius: 6px; font-family: Consolas, monospace; font-size: 12px; overflow-x: auto; margin-bottom: 14px;">
-<pre style="margin: 0;"># 确定性装配：顶层矢量、中层晕渲、底层卫星
-root = QgsProject.instance().layerTreeRoot()
-root.insertLayer(0, top_vector_layer)    # 最顶层 (透明矢量路网与标注)
-root.insertLayer(1, topo_relief_layer)   # 中间层 (OpenTopoMap 60% 晕渲)
-root.insertLayer(2, satellite_layer)     # 最底层 (高清遥感底图 100%)
-iface.mapCanvas().refresh()</pre>
-</div>
-
 <!-- Section 5 -->
 <h2 style="font-size: 18px; font-weight: 700; color: #0f172a; border-left: 4px solid #0284c7; padding-left: 10px; margin: 32px 0 16px 0;">
-五、开源项目地址与极速体验
+五、开源项目地址与 QGIS 官方仓库一键安装
 </h2>
 
 <p style="font-size: 14.5px; color: #334155;">
-本项目完整源代码、单元测试与离线安装包现已遵循 <strong>GPL-3.0</strong> 协议开源共享：
+本项目完整源代码、单元测试与发布包现已遵循 <strong>GPL-3.0</strong> 协议开源共享：
 </p>
 <ul style="font-size: 13.5px; color: #0284c7;">
-  <li><strong>GitHub 仓库</strong>：<code>https://github.com/Gmatrix2022/qgis-locus-layer-studio</code></li>
-  <li><strong>Gitee 码云镜像</strong>：<code>https://gitee.com/nousyang/qgis-locus-layer-studio</code></li>
+  <li><strong>GitHub 仓库（全英文文档与 Release）</strong>：<br><code>https://github.com/Gmatrix2022/qgis-locus-layer-studio</code></li>
+  <li><strong>QGIS 自建插件市场仓库 XML 地址（推荐）</strong>：<br><code>https://raw.githubusercontent.com/Gmatrix2022/qgis-locus-layer-studio/main/plugins.xml</code></li>
 </ul>
 
 <div style="background-color: #f1f5f9; padding: 14px 18px; border-radius: 6px; margin: 18px 0;">
-  <p style="margin: 0 0 6px 0; font-size: 14px; font-weight: 700; color: #0f172a;">QGIS 插件一键安装指南：</p>
+  <p style="margin: 0 0 6px 0; font-size: 14px; font-weight: 700; color: #0f172a;">推荐：在 QGIS 插件管理器中一键添加本仓库：</p>
   <ol style="margin: 0; padding-left: 20px; font-size: 13px; color: #475569;">
-    <li>打开 QGIS 4.2，点击顶部菜单栏 <strong>Plugins → Manage and Install Plugins</strong>；</li>
-    <li>切换至 <strong>Install from ZIP</strong> 选项卡，选择下载好的 <code>qgis_locus_map_control_en.zip</code> 安装包；</li>
-    <li>点击 <strong>Install Plugin</strong>，即可在 QGIS 右侧自动唤起控制面板，开箱即用！</li>
+    <li>打开 QGIS，点击顶部菜单 <strong>Plugins → Manage and Install Plugins...</strong>；</li>
+    <li>切换至 <strong>Settings</strong> 选项卡，找到 <strong>Plugin Repositories</strong>，点击 <strong>Add...</strong>；</li>
+    <li>输入名称 <code>Locus Map Studio Repository</code>，并将上述 XML 地址粘贴至 URL 栏中，点击 OK；</li>
+    <li>切换至 <strong>All</strong> 列表，搜索 <code>Locus Map Control</code>，直接点击 <strong>Install Plugin</strong>，后续版本即可在 QGIS 内直接自动更新！</li>
   </ol>
+</div>
+
+<!-- Section 6: Sponsor / Donation -->
+<div style="background-color: #f8fafc; border: 1px dashed #cbd5e1; padding: 18px; border-radius: 8px; margin: 30px 0; text-align: center;">
+  <h3 style="margin: 0 0 10px 0; font-size: 16px; color: #0f172a; font-weight: 700;">☕ 请老杨喝杯咖啡 / 赞助开源生态</h3>
+  <p style="font-size: 13.5px; color: #64748b; margin: 0 0 16px 0;">
+    如果您觉得这个插件解决了您长久以来的底图叠加与户外轨迹痛点，欢迎赞赏支持老杨与 GeoAI 团队继续深耕开源 GIS 与跨端工具链！
+  </p>
+  <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;">
+    <div style="display: inline-block; text-align: center; margin: 8px 16px;">
+      <img src="D:/AIAssistant/GeoAI地理空间地图创作智能体/output/codex/qgis-locus-layer-studio-20261016/docs/assets/wechat_sponsor_qr.png" style="width: 140px; height: 140px; border-radius: 6px; border: 1px solid #e2e8f0;" alt="微信赞赏码" />
+      <div style="font-size: 12px; color: #059669; font-weight: 700; margin-top: 6px;">微信赞赏支持</div>
+    </div>
+    <div style="display: inline-block; text-align: center; margin: 8px 16px;">
+      <img src="D:/AIAssistant/GeoAI地理空间地图创作智能体/output/codex/qgis-locus-layer-studio-20261016/docs/assets/alipay_sponsor_qr.jpg" style="width: 140px; height: 140px; border-radius: 6px; border: 1px solid #e2e8f0;" alt="支付宝赞赏码" />
+      <div style="font-size: 12px; color: #0284c7; font-weight: 700; margin-top: 6px;">支付宝打赏支持</div>
+    </div>
+  </div>
 </div>
 
 <!-- Compliance Notice -->
