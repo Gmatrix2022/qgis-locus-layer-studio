@@ -1,0 +1,41 @@
+{
+  "artifact_name": "qgis-locus-layer-studio-20261016",
+  "author": "codex@yy23",
+  "created_at": "2026-10-16T13:39:55+08:00",
+  "title": "QGIS Locus 离线地图风格与叠加层控制插件",
+  "description": "当前 QGIS 插件：读取 Locus Mapsforge .map 与六个主题包，调用本机 Mapsforge 服务生成可开关 XYZ 地图层，支持风格选择、叠加/底图模式、注记/水系/等高线筛选和图层透明度。",
+  "status": "verified_ready",
+  "target": "QGIS 4.2.3, profile default",
+  "package": "qgis_locus_map_control_en.zip",
+  "package_version": "1.0.7",
+  "source_directory": "plugin/locus_map_control",
+  "source_data": "data/_inbox/locus/mapsVector",
+  "server": "http://127.0.0.1:18765 / 18766 (auto-detected)",
+  "verification": {
+    "qgis_plugin_manager": "installed_and_enabled_via_zip",
+    "python_syntax": "passed",
+    "project_saved": false,
+    "qgis_profile_copy": "present",
+    "plugin_manager_detection": "listed_under_installed_plugins_and_enabled",
+    "dock_panel": "opened_in_qgis_4.2.3_live; connected_to_mapsforge_service_5_profiles",
+    "golden_3layer_stack": "verified_on_live_qgis_canvas"
+  },
+  "design_deliverables": {
+    "system_plan": "docs/plans/2026-10-16-qgis-vector-map-overlay-open-source.md",
+    "wechat_article_draft": "docs/wechat-article-qgis-vector-map-overlay.md",
+    "actual_qgis_ui_capture": {
+      "path": "docs/assets/qgis-plugin-panel-actual.jpg",
+      "status": "real_qgis_4.2.3_english_ui_capture_verified",
+      "note": "Genuine QGIS 4.2.3 capture showing live English UI panel, active connection to local Mapsforge server with 5 profiles, and live satellite basemap."
+    },
+    "release_status": "ready_for_open_source_release",
+    "plugin_languages": ["English"],
+    "english_ui_update": "verified_active_in_qgis_4.2.3",
+    "opaque_basemap_layer_order_regression": "all_unit_and_live_checks_passed"
+  },
+  "notes": [
+    "插件包不包含 .map 原始数据、主题 ZIP 或卫星瓦片；按当前工程路径读取。",
+    "QGIS 图层是 Mapsforge 渲染后的 PNG XYZ 栅格瓦片，不是可编辑矢量要素。",
+    "完整主题切换为透明叠加时会自动过滤 XML 中的面填充类别；LocusSat.xml 是项目内置透明叠加主题。"
+  ]
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugins>
+  <pyqgis_plugin name="Locus Map Control" version="1.1.0" plugin_id="locus_map_control">
+    <description>Integrates Locus Mapsforge offline vector maps, vector tile overlays, and multi-source basemaps into QGIS.</description>
+    <about>Professional QGIS plugin bringing mobile outdoor offline vector maps (.map), multi-source raster basemaps (Esri, Google Satellite, OpenTopoMap), and vector tile overlay stacks into QGIS 3.x and 4.x. Supports Elevate/Elements themes, automatic language switching (English/Chinese), and built-in developer sponsor support.</about>
+    <version>1.1.0</version>
+    <qgis_minimum_version>3.0.0</qgis_minimum_version>
+    <qgis_maximum_version>4.99.0</qgis_maximum_version>
+    <homepage>https://github.com/Gmatrix2022/qgis-locus-layer-studio</homepage>
+    <file_name>qgis_locus_map_control.zip</file_name>
+    <icon>plugin/locus_map_control/assets/locus_icon.png</icon>
+    <author_name>Lao Yang &amp; Antigravity Agent Team</author_name>
+    <download_url>https://raw.githubusercontent.com/Gmatrix2022/qgis-locus-layer-studio/main/qgis_locus_map_control.zip</download_url>
+    <uploaded_by>Gmatrix2022</uploaded_by>
+    <create_date>2026-10-16T12:00:00</create_date>
+    <update_date>2026-10-17T02:45:00</update_date>
+    <experimental>False</experimental>
+    <deprecated>False</deprecated>
+    <tracker>https://github.com/Gmatrix2022/qgis-locus-layer-studio/issues</tracker>
+    <repository>https://github.com/Gmatrix2022/qgis-locus-layer-studio</repository>
+    <tags>mapsforge,vector tiles,locus,basemap,offline,elevation,google satellite,overlay</tags>
+  </pyqgis_plugin>
+</plugins>

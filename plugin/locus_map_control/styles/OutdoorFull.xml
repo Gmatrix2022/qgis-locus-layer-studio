@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+OutdoorFull —— 全要素离线户外地形底图主题（Mapsforge v5，带暖米色纸质底色与林地/水体填充）
+同时内含部分 dp 单位声明（如 1.2dp），用于验证 MapsforgeTileServer 的 dp 单位流式剥离能力。
+授权：本项目自建。地图数据版权 © OpenStreetMap contributors（ODbL）。
+-->
+<rendertheme xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             map-background="#FFF4F1EA" map-background-outside="#FFEBE6DC"
+             version="5" xmlns="http://mapsforge.org/renderTheme"
+             xsi:schemaLocation="http://mapsforge.org/renderTheme https://raw.githubusercontent.com/mapsforge/mapsforge/master/resources/renderTheme.xsd">
+
+<stylemenu id="outdoor-full-menu" defaultvalue="outdoor-full" defaultlang="zh">
+    <layer id="outdoor-full" visible="true">
+        <name lang="en" value="Outdoor Topo Full Basemap" />
+        <name lang="zh" value="全要素户外地形底图" />
+        <cat id="landcover" />
+        <cat id="water" />
+        <cat id="contour" />
+        <cat id="roads_major" />
+        <cat id="roads_minor" />
+        <cat id="tracks" />
+        <cat id="paths" />
+        <cat id="labels" />
+    </layer>
+</stylemenu>
+
+<rule cat="landcover" e="way" k="natural|landuse" v="wood|forest" closed="yes" zoom-min="9">
+    <area fill="#D9D4E6C3" />
+</rule>
+<rule cat="landcover" e="way" k="natural|landuse" v="grass|grassland|meadow|scrub" closed="yes" zoom-min="10">
+    <area fill="#CCE3EED6" />
+</rule>
+<rule cat="landcover" e="way" k="landuse" v="residential|industrial|commercial" closed="yes" zoom-min="10">
+    <area fill="#CCE8E2D5" />
+</rule>
+
+<rule cat="water" e="way" k="natural" v="water" closed="yes" zoom-min="8">
+    <area fill="#FF8EC7E8" />
+</rule>
+<rule cat="water" e="way" k="landuse" v="reservoir|basin" closed="yes" zoom-min="10">
+    <area fill="#FF8EC7E8" />
+</rule>
+<rule cat="water" e="way" k="waterway" v="river" zoom-min="8">
+    <line stroke="#FF4A9BD1" stroke-width="1.5dp" />
+</rule>
+<rule cat="water" e="way" k="waterway" v="stream|canal" zoom-min="11">
+    <line stroke="#FF5CA9DE" stroke-width="0.9dp" />
+</rule>
+
+<rule cat="contour" e="any" k="contour_ext" v="*" zoom-min="11">
+    <rule e="way" k="contour_ext" v="elevation_minor" zoom-min="13">
+        <line stroke="#668A5A32" stroke-width="0.25dp" curve="cubic" />
+    </rule>
+    <rule e="way" k="contour_ext" v="elevation_medium" zoom-min="11">
+        <line stroke="#888A5A32" stroke-width="0.50dp" curve="cubic" />
+    </rule>
+    <rule e="way" k="contour_ext" v="elevation_major" zoom-min="11">
+        <line stroke="#B3703F1E" stroke-width="0.90dp" curve="cubic" />
+    </rule>
+    <rule e="way" k="contour_ext" v="elevation_major" zoom-min="12" zoom-max="15">
+        <pathText k="ele" font-style="bold" font-size="8dp" fill="#6E4A22" stroke="#D9FFFFFF" stroke-width="1.5dp"
+                  repeat-start="60dp" repeat-gap="220dp" text-orientation="left" />
+    </rule>
+</rule>
+
+<rule cat="roads_major" e="way" k="highway" v="motorway|motorway_link|trunk|trunk_link" zoom-min="7">
+    <line stroke="#FF332211" stroke-width="3.4dp" stroke-linecap="round" />
+    <line stroke="#FFE85C33" stroke-width="2.2dp" stroke-linecap="round" />
+</rule>
+<rule cat="roads_major" e="way" k="highway" v="primary|primary_link" zoom-min="8">
+    <line stroke="#FF332211" stroke-width="2.6dp" stroke-linecap="round" />
+    <line stroke="#FFF29B38" stroke-width="1.6dp" stroke-linecap="round" />
+</rule>
+<rule cat="roads_major" e="way" k="highway" v="secondary|secondary_link" zoom-min="9">
+    <line stroke="#FF443322" stroke-width="2.0dp" stroke-linecap="round" />
+    <line stroke="#FFFCE07C" stroke-width="1.2dp" stroke-linecap="round" />
+</rule>
+<rule cat="roads_minor" e="way" k="highway" v="tertiary|tertiary_link|unclassified|residential" zoom-min="10">
+    <line stroke="#FF554433" stroke-width="1.4dp" stroke-linecap="round" />
+    <line stroke="#FFFFFFFF" stroke-width="0.9dp" stroke-linecap="round" />
+</rule>
+<rule cat="tracks" e="way" k="highway" v="track" zoom-min="11">
+    <line stroke="#FF7A5230" stroke-width="1.1dp" stroke-dasharray="6,3" stroke-linecap="butt" />
+</rule>
+<rule cat="paths" e="way" k="highway" v="path|footway|cycleway|steps" zoom-min="12">
+    <line stroke="#FFD94E28" stroke-width="0.9dp" stroke-dasharray="4,2" stroke-linecap="butt" />
+</rule>
+
+<rule cat="labels" e="node" k="place" v="city" zoom-min="7">
+    <caption k="name" font-style="bold" font-size="13dp" fill="#1F1810" stroke="#E8FFFFFF" stroke-width="3dp" />
+</rule>
+<rule cat="labels" e="node" k="place" v="town" zoom-min="9">
+    <caption k="name" font-style="bold" font-size="11dp" fill="#2A2015" stroke="#E8FFFFFF" stroke-width="2.5dp" />
+</rule>
+<rule cat="labels" e="node" k="place" v="village" zoom-min="11">
+    <caption k="name" font-size="10dp" fill="#33281C" stroke="#D9FFFFFF" stroke-width="2dp" />
+</rule>
+<rule cat="labels" e="node" k="natural" v="peak|volcano" zoom-min="10">
+    <caption k="name" font-style="bold" font-size="10dp" fill="#4A2E10" stroke="#E8FFFFFF" stroke-width="2.5dp" />
+</rule>
+
+</rendertheme>

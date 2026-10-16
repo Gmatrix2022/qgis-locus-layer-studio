@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ContourOnly —— 只渲染等高线的独立叠加层主题（Mapsforge v5）
+授权：本项目自建。地图数据版权 © OpenStreetMap contributors（ODbL）。
+-->
+<rendertheme xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             map-background="#00000000" map-background-outside="#00000000"
+             version="5" xmlns="http://mapsforge.org/renderTheme"
+             xsi:schemaLocation="http://mapsforge.org/renderTheme https://raw.githubusercontent.com/mapsforge/mapsforge/master/resources/renderTheme.xsd">
+
+<stylemenu id="contour-only-menu" defaultvalue="contour-layer" defaultlang="en">
+    <layer id="contour-layer" visible="true">
+        <name lang="en" value="Contour lines only" />
+        <name lang="zh" value="仅等高线层" />
+        <cat id="contour" />
+    </layer>
+</stylemenu>
+
+<rule cat="contour" e="any" k="contour_ext" v="*" zoom-min="12">
+    <rule e="way" k="contour_ext" v="elevation_minor" zoom-min="13">
+        <line stroke="#5C6E4A2A" stroke-width="0.20" curve="cubic" />
+    </rule>
+    <rule e="way" k="contour_ext" v="elevation_medium">
+        <line stroke="#7A7A5230" stroke-width="0.42" curve="cubic" />
+    </rule>
+    <rule e="way" k="contour_ext" v="elevation_major">
+        <line stroke="#99703F1E" stroke-width="0.75" curve="cubic" />
+    </rule>
+    <rule e="way" k="contour_ext" v="elevation_major" zoom-min="13" zoom-max="15">
+        <pathText k="ele" font-style="bold" font-size="8" fill="#6E4A22" stroke="#D9FFFFFF" stroke-width="1.5"
+                  repeat-start="60" repeat-gap="220" text-orientation="left" />
+    </rule>
+</rule>
+
+</rendertheme>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ContourSparse —— 只保留中档 + 主档等高线的稀疏叠加层主题（Mapsforge v5）
+授权：本项目自建。地图数据版权 © OpenStreetMap contributors（ODbL）。
+-->
+<rendertheme xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             map-background="#00000000" map-background-outside="#00000000"
+             version="5" xmlns="http://mapsforge.org/renderTheme"
+             xsi:schemaLocation="http://mapsforge.org/renderTheme https://raw.githubusercontent.com/mapsforge/mapsforge/master/resources/renderTheme.xsd">
+
+<stylemenu id="contour-sparse-menu" defaultvalue="contour-sparse" defaultlang="en">
+    <layer id="contour-sparse" visible="true">
+        <name lang="en" value="Contour lines (medium/major only)" />
+        <name lang="zh" value="仅等高线层 · 稀疏档" />
+        <cat id="contour" />
+    </layer>
+</stylemenu>
+
+<rule cat="contour" e="any" k="contour_ext" v="*" zoom-min="9">
+    <rule e="way" k="contour_ext" v="elevation_medium" zoom-min="11">
+        <line stroke="#8C7A5230" stroke-width="0.55" curve="cubic" />
+    </rule>
+    <rule e="way" k="contour_ext" v="elevation_major" zoom-min="9">
+        <line stroke="#B3703F1E" stroke-width="1.05" curve="cubic" />
+    </rule>
+    <rule e="way" k="contour_ext" v="elevation_major" zoom-min="10" zoom-max="15">
+        <pathText k="ele" font-style="bold" font-size="9" fill="#6E4A22" stroke="#D9FFFFFF" stroke-width="1.5"
+                  repeat-start="80" repeat-gap="260" text-orientation="left" />
+    </rule>
+</rule>
+
+</rendertheme>

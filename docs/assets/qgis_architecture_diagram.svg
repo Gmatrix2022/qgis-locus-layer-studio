@@ -1,0 +1,229 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="qgis-card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f2638"/>
+    </linearGradient>
+    <linearGradient id="server-card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#2d1c3b"/>
+    </linearGradient>
+    <linearGradient id="golden-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="green-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="blue-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+    <linearGradient id="purple-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+
+    <!-- Drop Shadows -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+    <filter id="glow-gold" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <!-- Markers -->
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#60a5fa"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#34d399"/>
+    </marker>
+    <marker id="arrow-gold" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="800" rx="16" fill="url(#bg-grad)"/>
+  
+  <!-- Outer Grid decorative lines -->
+  <g opacity="0.07" stroke="#94a3b8" stroke-width="1">
+    <path d="M0,100 L1200,100 M0,200 L1200,200 M0,300 L1200,300 M0,400 L1200,400 M0,500 L1200,500 M0,600 L1200,600 M0,700 L1200,700"/>
+    <path d="M100,0 L100,800 M200,0 L200,800 M300,0 L300,800 M400,0 L400,800 M500,0 L500,800 M600,0 L600,800 M700,0 L700,800 M800,0 L800,800 M900,0 L900,800 M1000,0 L1000,800 M1100,0 L1100,800"/>
+  </g>
+
+  <!-- Main Title & Badge -->
+  <g transform="translate(60, 45)">
+    <rect x="0" y="0" width="1080" height="50" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+    <circle cx="28" cy="25" r="12" fill="#589632"/>
+    <text x="28" y="30" font-family="Segoe UI, -apple-system, sans-serif" font-weight="900" font-size="14" fill="#ffffff" text-anchor="middle">Q</text>
+    <text x="52" y="31" font-family="Segoe UI, PingFang SC, sans-serif" font-weight="700" font-size="18" fill="#f8fafc">QGIS 4.2 × Mapsforge 离线矢量地图与黄金三层流系统架构</text>
+    <rect x="880" y="12" width="180" height="26" rx="13" fill="#0f766e"/>
+    <text x="970" y="29" font-family="Segoe UI, PingFang SC, sans-serif" font-weight="600" font-size="12" fill="#a7f3d0" text-anchor="middle">OpenSource GIS / v1.0.8</text>
+  </g>
+
+  <!-- ================= TOP BOX: QGIS 4.2 HOST PROCESS ================= -->
+  <g transform="translate(60, 115)">
+    <rect width="1080" height="340" rx="14" fill="url(#qgis-card)" stroke="#38bdf8" stroke-width="1.8" filter="url(#shadow)"/>
+    
+    <!-- Header -->
+    <path d="M0,14 Q0,0 14,0 L1066,0 Q1080,0 1080,14 L1080,42 L0,42 Z" fill="#0369a1"/>
+    <text x="24" y="27" font-family="Segoe UI, PingFang SC, sans-serif" font-weight="700" font-size="15" fill="#ffffff">🖥️ QGIS 4.2 客户端进程宿主 (Python 3.12 / PyQt6 运行时环境)</text>
+    
+    <!-- SUB-BOX 1: UI Dock Panel -->
+    <g transform="translate(24, 60)">
+      <rect width="360" height="255" rx="10" fill="#0f172a" stroke="#0284c7" stroke-width="1.2"/>
+      <rect width="360" height="32" rx="10" fill="#0369a1" opacity="0.6"/>
+      <text x="14" y="22" font-family="Segoe UI, PingFang SC, sans-serif" font-weight="700" font-size="13" fill="#e0f2fe">📌 LocusMapControlDock 悬浮面板</text>
+      
+      <!-- 4 Tabs -->
+      <g transform="translate(12, 42)">
+        <rect x="0" y="0" width="75" height="22" rx="4" fill="#1e293b" stroke="#475569"/>
+        <text x="37" y="15" font-family="Segoe UI, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Offline .map</text>
+        <rect x="80" y="0" width="75" height="22" rx="4" fill="#1e293b" stroke="#475569"/>
+        <text x="117" y="15" font-family="Segoe UI, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Vector Tiles</text>
+        <rect x="160" y="0" width="85" height="22" rx="4" fill="#1e293b" stroke="#475569"/>
+        <text x="202" y="15" font-family="Segoe UI, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Raster Basemap</text>
+        <rect x="250" y="0" width="85" height="22" rx="4" fill="#d97706" stroke="#f59e0b"/>
+        <text x="292" y="15" font-family="Segoe UI, sans-serif" font-weight="700" font-size="10" fill="#ffffff" text-anchor="middle">⭐ Golden Stack</text>
+      </g>
+
+      <!-- Panel Controls -->
+      <g transform="translate(14, 78)">
+        <!-- Combo 1 -->
+        <rect x="0" y="0" width="332" height="30" rx="5" fill="#1e293b" stroke="#334155"/>
+        <text x="10" y="19" font-family="Segoe UI, PingFang SC, sans-serif" font-size="11" fill="#f8fafc">🗺️ 离线地图: ⭐ Yunnan.map (OpenAndroMaps 1.1GB)</text>
+        <!-- Combo 2 -->
+        <rect x="0" y="38" width="332" height="30" rx="5" fill="#1e293b" stroke="#334155"/>
+        <text x="10" y="57" font-family="Segoe UI, PingFang SC, sans-serif" font-size="11" fill="#38bdf8">🎨 渲染样式: LocusSat.xml (透明叠置剥离面色块)</text>
+        <!-- Slider 1 -->
+        <rect x="0" y="76" width="332" height="28" rx="5" fill="#1e293b" stroke="#334155"/>
+        <text x="10" y="94" font-family="Segoe UI, sans-serif" font-size="10.5" fill="#e2e8f0">路网/注记透明度: 100% [═══════════●]</text>
+        <!-- Slider 2 -->
+        <rect x="0" y="112" width="332" height="28" rx="5" fill="#1e293b" stroke="#334155"/>
+        <text x="10" y="130" font-family="Segoe UI, sans-serif" font-size="10.5" fill="#e2e8f0">地形等高线透明度: 60%  [═══════●   ]</text>
+        <!-- Button -->
+        <rect x="0" y="148" width="332" height="30" rx="6" fill="url(#golden-grad)" stroke="#d97706" filter="url(#shadow)"/>
+        <text x="166" y="168" font-family="Segoe UI, PingFang SC, sans-serif" font-weight="700" font-size="12" fill="#78350f" text-anchor="middle">⭐ 一键装载 Golden 3-Layer Stack</text>
+      </g>
+    </g>
+
+    <!-- SUB-BOX 2: Engine & Discovery Core -->
+    <g transform="translate(406, 60)">
+      <rect width="320" height="255" rx="10" fill="#0f172a" stroke="#0ea5e9" stroke-width="1.2"/>
+      <rect width="320" height="32" rx="10" fill="#0284c7" opacity="0.6"/>
+      <text x="14" y="22" font-family="Segoe UI, PingFang SC, sans-serif" font-weight="700" font-size="13" fill="#e0f2fe">⚙️ 插件调度内核 (Python 核心驱动)</text>
+      
+      <g transform="translate(14, 45)">
+        <rect x="0" y="0" width="292" height="58" rx="6" fill="#1e293b" stroke="#334155"/>
+        <text x="10" y="18" font-family="Segoe UI, PingFang SC, sans-serif" font-weight="700" font-size="11.5" fill="#38bdf8">🔍 _discover_local_maps() 引擎</text>
+        <text x="10" y="34" font-family="Segoe UI, sans-serif" font-size="10" fill="#94a3b8">• 递归扫描 data/_inbox/ 及多盘符</text>
+        <text x="10" y="48" font-family="Segoe UI, sans-serif" font-size="10" fill="#34d399">• 命中 112 个.map，智能置顶西南/云南</text>
+
+        <rect x="0" y="66" width="292" height="58" rx="6" fill="#1e293b" stroke="#334155"/>
+        <text x="10" y="84" font-family="Segoe UI, PingFang SC, sans-serif" font-weight="700" font-size="11.5" fill="#f59e0b">⚡ _load_golden_stack() 拓扑编排</text>
+        <text x="10" y="100" font-family="Segoe UI, sans-serif" font-size="10" fill="#94a3b8">• 严格控制 LayerTreeRoot 插入索引</text>
+        <text x="10" y="114" font-family="Segoe UI, sans-serif" font-size="10" fill="#34d399">• 顶层矢量 / 中层晕渲 / 底层卫星</text>
+
+        <rect x="0" y="132" width="292" height="65" rx="6" fill="#1e293b" stroke="#334155"/>
+        <text x="10" y="150" font-family="Segoe UI, PingFang SC, sans-serif" font-weight="700" font-size="11.5" fill="#a78bfa">🎛️ 动态透明度与热重绘绑定</text>
+        <text x="10" y="166" font-family="Segoe UI, sans-serif" font-size="10" fill="#94a3b8">• QSlider.valueChanged -> setOpacity()</text>
+        <text x="10" y="180" font-family="Segoe UI, sans-serif" font-size="10" fill="#34d399">• iface.mapCanvas().refresh() 零延迟</text>
+      </g>
+    </g>
+
+    <!-- SUB-BOX 3: QGIS Map Canvas & Layer Hierarchy -->
+    <g transform="translate(748, 60)">
+      <rect width="308" height="255" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="1.2"/>
+      <rect width="308" height="32" rx="10" fill="#059669" opacity="0.6"/>
+      <text x="14" y="22" font-family="Segoe UI, PingFang SC, sans-serif" font-weight="700" font-size="13" fill="#ecfdf5">🗺️ QGIS 画布三层渲染栈 (LayerTree)</text>
+
+      <g transform="translate(14, 45)">
+        <!-- Layer 3 (Top) -->
+        <rect x="0" y="0" width="280" height="58" rx="6" fill="#064e3b" stroke="#34d399" stroke-width="1.5"/>
+        <text x="10" y="18" font-family="Segoe UI, PingFang SC, sans-serif" font-weight="700" font-size="11.5" fill="#a7f3d0">3. Mapsforge Vector (Top 顶层 100%)</text>
+        <text x="10" y="34" font-family="Segoe UI, sans-serif" font-size="10" fill="#6ee7b7">• 剥离多边形背景，仅保留道路与POI</text>
+        <text x="10" y="48" font-family="Segoe UI, sans-serif" font-size="10" fill="#6ee7b7">• 高速橙色/主干道黄色/街巷白色清晰叠置</text>
+
+        <!-- Layer 2 (Middle) -->
+        <rect x="0" y="66" width="280" height="58" rx="6" fill="#1e1b4b" stroke="#818cf8" stroke-width="1.2"/>
+        <text x="10" y="84" font-family="Segoe UI, PingFang SC, sans-serif" font-weight="700" font-size="11.5" fill="#c7d2fe">2. Topo Relief &amp; Contours (中层 60%)</text>
+        <text x="10" y="100" font-family="Segoe UI, sans-serif" font-size="10" fill="#a5b4fc">• OpenTopoMap 等高线与山体立体晕渲</text>
+        <text x="10" y="114" font-family="Segoe UI, sans-serif" font-size="10" fill="#a5b4fc">• 柔和半透明混合，提供三维地形立体感</text>
+
+        <!-- Layer 1 (Bottom) -->
+        <rect x="0" y="132" width="280" height="58" rx="6" fill="#451a03" stroke="#f59e0b" stroke-width="1.2"/>
+        <text x="10" y="150" font-family="Segoe UI, PingFang SC, sans-serif" font-weight="700" font-size="11.5" fill="#fde68a">1. Satellite Basemap (底层 100%)</text>
+        <text x="10" y="166" font-family="Segoe UI, sans-serif" font-size="10" fill="#fcd34d">• Esri World Imagery 高清卫星遥感影像</text>
+        <text x="10" y="180" font-family="Segoe UI, sans-serif" font-size="10" fill="#fcd34d">• 物理地表绝对空间底衬，不透明铺底</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= MIDDLE ARROWS: PROTOCOL BRIDGE ================= -->
+  <g transform="translate(60, 465)">
+    <!-- Up/Down Connector Rect -->
+    <rect x="180" y="5" width="720" height="38" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="1.2" stroke-dasharray="4,4"/>
+    <text x="540" y="28" font-family="Consolas, monospace" font-size="12" fill="#38bdf8" text-anchor="middle">
+      标准 HTTP XYZ 瓦片通信: http://127.0.0.1:18765/mapsforge/{profile}/{z}/{x}/{y}.png?transparent=true
+    </text>
+    
+    <!-- Arrows -->
+    <line x1="280" y1="0" x2="280" y2="48" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-blue)"/>
+    <line x1="800" y1="48" x2="800" y2="0" stroke="#34d399" stroke-width="2" marker-end="url(#arrow-green)"/>
+  </g>
+
+  <!-- ================= BOTTOM BOX: HEADLESS MAPSFORGE SERVER ================= -->
+  <g transform="translate(60, 520)">
+    <rect width="1080" height="235" rx="14" fill="url(#server-card)" stroke="#c084fc" stroke-width="1.8" filter="url(#shadow)"/>
+    
+    <!-- Header -->
+    <path d="M0,14 Q0,0 14,0 L1066,0 Q1080,0 1080,14 L1080,40 L0,40 Z" fill="#6b21a8"/>
+    <text x="24" y="26" font-family="Segoe UI, PingFang SC, sans-serif" font-weight="700" font-size="15" fill="#ffffff">☕ MapsforgeTileServer 无头微服务引擎 (Java 17 LTS / 本地回环 18765 端口)</text>
+    
+    <g transform="translate(24, 55)">
+      <!-- Server Sub 1: MultiMapDataStore -->
+      <g transform="translate(0, 0)">
+        <rect width="330" height="155" rx="8" fill="#0f172a" stroke="#7e22ce"/>
+        <text x="14" y="24" font-family="Segoe UI, PingFang SC, sans-serif" font-weight="700" font-size="13" fill="#e9d5ff">📦 MultiMapDataStore 空间融合</text>
+        <text x="14" y="50" font-family="Segoe UI, sans-serif" font-size="11" fill="#cbd5e1">• 云南 1.1GB (Ch-Yunnan_oam.osm.map)</text>
+        <text x="14" y="72" font-family="Segoe UI, sans-serif" font-size="11" fill="#cbd5e1">• 中国西南 2.0GB (China-South_oam.osm.map)</text>
+        <text x="14" y="94" font-family="Segoe UI, sans-serif" font-size="11" fill="#cbd5e1">• 助手全量 1.4GB (zhushou-net-cn221029.map)</text>
+        <text x="14" y="116" font-family="Segoe UI, sans-serif" font-size="11" fill="#a855f7">• 跨省跨图幅内存无缝空间缝合 (RETURN_ALL)</text>
+        <text x="14" y="138" font-family="Segoe UI, sans-serif" font-size="11" fill="#34d399">• 彻底杜绝 N25° 跨纬线等高线接缝撕裂</text>
+      </g>
+
+      <!-- Server Sub 2: Theme Rendering & dp sanitizer -->
+      <g transform="translate(350, 0)">
+        <rect width="340" height="155" rx="8" fill="#0f172a" stroke="#7e22ce"/>
+        <text x="14" y="24" font-family="Segoe UI, PingFang SC, sans-serif" font-weight="700" font-size="13" fill="#e9d5ff">🎨 XML 渲染流与 dp 单位清洗</text>
+        <text x="14" y="50" font-family="Segoe UI, sans-serif" font-size="11" fill="#cbd5e1">• LocusSat.xml: 剥离草地/林地面多边形色块</text>
+        <text x="14" y="72" font-family="Segoe UI, sans-serif" font-size="11" fill="#cbd5e1">• ContourOnly / ContourSparse: 仅出高程线</text>
+        <text x="14" y="94" font-family="Segoe UI, sans-serif" font-size="11" fill="#cbd5e1">• 动态正则流式剔除 Android dp 移动端单位</text>
+        <text x="14" y="116" font-family="Segoe UI, sans-serif" font-size="11" fill="#f59e0b">• AWT/Desktop 绝对像素精确光栅化</text>
+        <text x="14" y="138" font-family="Segoe UI, sans-serif" font-size="11" fill="#34d399">• transparent: "true" 纯透明 Alpha 通道</text>
+      </g>
+
+      <!-- Server Sub 3: Cross-GIS Shared Bus -->
+      <g transform="translate(710, 0)">
+        <rect width="322" height="155" rx="8" fill="#0f172a" stroke="#eab308"/>
+        <text x="14" y="24" font-family="Segoe UI, PingFang SC, sans-serif" font-weight="700" font-size="13" fill="#fef08a">🔄 双轨桌面 GIS 共享渲染中台</text>
+        <rect x="14" y="38" width="294" height="46" rx="6" fill="#1e293b" stroke="#475569"/>
+        <text x="24" y="56" font-family="Segoe UI, PingFang SC, sans-serif" font-weight="600" font-size="11" fill="#38bdf8">ArcGIS Pro 3.7 Add-In (.NET 10 / C#)</text>
+        <text x="24" y="74" font-family="Segoe UI, sans-serif" font-size="10" fill="#94a3b8">仿真 ArcGIS REST MapServer 协议接入</text>
+        
+        <rect x="14" y="92" width="294" height="46" rx="6" fill="#1e293b" stroke="#475569"/>
+        <text x="24" y="110" font-family="Segoe UI, PingFang SC, sans-serif" font-weight="600" font-size="11" fill="#34d399">QGIS 4.2 插件 (Python 3.12 / PyQt6)</text>
+        <text x="24" y="128" font-family="Segoe UI, sans-serif" font-size="10" fill="#94a3b8">原生 QgsRasterLayer XYZ 瓦片接入</text>
+      </g>
+    </g>
+  </g>
+</svg>
