@@ -3,6 +3,7 @@
 [![QGIS Version](https://img.shields.io/badge/QGIS-3.x%20%7C%204.x-brightgreen.svg)](https://qgis.org/)
 [![License](https://img.shields.io/badge/License-GPL%20v3.0-blue.svg)](LICENSE)
 [![Release](https://img.shields.io/badge/Release-v1.1.0-orange.svg)](https://github.com/Gmatrix2022/qgis-locus-layer-studio/releases)
+[![Sponsor](https://img.shields.io/badge/Sponsor-Lao%20Yang-ff69b4.svg)](SPONSOR.md)
 [![Language](https://img.shields.io/badge/i18n-English%20%7C%20%E4%B8%AD%E6%96%87-blue)](https://github.com/Gmatrix2022/qgis-locus-layer-studio)
 
 A professional, high-performance QGIS plugin bringing mobile outdoor offline vector maps (`.map`), vector tile overlays, and multi-source satellite/topographic basemaps into QGIS 3.x and QGIS 4.x.
@@ -121,13 +122,40 @@ qgis-locus-layer-studio/
 
 ## Support & Sponsorship
 
-If this plugin helps your fieldwork, outdoor mapping, or GIS research, consider sponsoring the author (**Lao Yang** / `老杨`):
+If this plugin helps your fieldwork, outdoor expeditions, or GIS research, consider sponsoring the author (**Lao Yang** / `老杨`):
 
-| WeChat Pay (微信赞赏) | Alipay (支付宝) |
-|:---:|:---:|
-| ![WeChat Pay](docs/assets/wechat_sponsor_qr.png) | ![Alipay](docs/assets/alipay_sponsor_qr.jpg) |
+<div align="center">
 
-Your support keeps open-source GIS tools evolving!
+<table>
+  <thead>
+    <tr>
+      <th align="center" width="280">WeChat Pay (微信赞赏)</th>
+      <th align="center" width="280">Alipay (支付宝)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">
+        <br>
+        <img src="https://raw.githubusercontent.com/Gmatrix2022/qgis-locus-layer-studio/main/docs/assets/wechat_sponsor_qr.png" width="220" alt="WeChat Pay QR" />
+        <br><br>
+        <sub>Scan with WeChat / 微信扫码支持</sub>
+        <br><br>
+      </td>
+      <td align="center">
+        <br>
+        <img src="https://raw.githubusercontent.com/Gmatrix2022/qgis-locus-layer-studio/main/docs/assets/alipay_sponsor_qr.jpg" width="220" alt="Alipay QR" />
+        <br><br>
+        <sub>Scan with Alipay / 支付宝扫码支持</sub>
+        <br><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Your generous sponsorship keeps open-source GIS tools and cartographic innovations alive!</em></p>
+
+</div>
 
 ---
 
